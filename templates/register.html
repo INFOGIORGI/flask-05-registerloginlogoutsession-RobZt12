@@ -1,14 +1,19 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
-{%block navbar%}
+{% block navbar %}
 <ul>
-    <li><a href="{{url_for('login')}}">Login</a></li>
+    <li><a href="{{ url_for('login') }}">Login</a></li>
 </ul>
-{%endblock%}
-{%block form%}
-<input type = text placeholder="inserici il tuo nome">
-<input type = text placeholder="inserisci il tuo cognome">
-<input type = text placeholder="inserisci il tuo username">
-<input type = text placeholder="insersci la tua password">
-<input type = text placeholder="conferma la tua password">
-{%endblock%}
+{% endblock %}
+
+{% block content %}
+<form action="/register/" method="POST">
+    <input type="text"  name="nome" placeholder="inserici il tuo nome">
+    <input type="text"  name="cognome" placeholder="inserisci il tuo cognome">
+    <input type="text"  name="username" placeholder="inserisci il tuo username">
+    <input type="password"  name="password" placeholder="insersci la tua password">
+    <input type="password" name="v_password" placeholder="conferma la tua password">
+    <input type="submit" value="registrati">
+</form>
+
+{% endblock %}
