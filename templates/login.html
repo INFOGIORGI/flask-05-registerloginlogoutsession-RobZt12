@@ -1,15 +1,21 @@
 {%extends 'base.html'%}
-
 {%block navbar%}
 <ul>
-    <li><a href="{{url_for('register')}}">Register</a></li>
+    <li><a href="{{url_for('register')}}">Registrati</a></li>
+    <li><a href ="{{url_for('login')}}">Login</a></li>
 </ul>
 {%endblock%}
-
 {%block content%}
-<form>
-<input type = text placeholder="inserisci il tuo username">
-<input type = text placeholder="inserici la tua password">
+<form method="post" action="/login">
+    <input type = 'text' name = 'username'  placeholder="Inserisci username">
+    <input type = 'password' name = 'password'  placeholder="Inserisci password">
+    <input type = 'submit' value="Accedi">
 </form>
+{%with error = get_flashed_messages()%}
+    {% if error%}
+        {%for e in error%}
+            <h1 style="color: red;">{{e}}</h1>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
 {%endblock%}
-

@@ -1,29 +1,24 @@
-{% extends 'base.html' %}
-
-{% block navbar %}
+{%extends 'base.html'%}
+{%block navbar%}
 <ul>
-    <li><a href="{{ url_for('login') }}">Login</a></li>
+    <li><a href="{{url_for('register')}}"> Registrati</a></li>
+    <li><a href="{{url_for('login')}}">Login</a></li>
 </ul>
-{% endblock %}
-
-
-{% block content %}
-<form action="/register/" method="POST">
-    <input type="text"  name="nome" placeholder="inserici il tuo nome">
-    <input type="text"  name="cognome" placeholder="inserisci il tuo cognome">
-    <input type="text"  name="username" placeholder="inserisci il tuo username">
-    <input type="password"  name="password" placeholder="insersci la tua password">
-    <input type="password" name="v_password" placeholder="conferma la tua password">
-    <input type="submit" value="registrati">
+{%endblock%}
+{%block content%}
+<form method="post" action = '/'>
+    <input type="text" name = 'nome'  placeholder="Inserisci il tuo nome">
+    <input type="text"  name = 'cognome' placeholder="Inserisci il tuo cognome">
+    <input type="text" name = 'username' placeholder="Inserisci il tuo username">
+    <input type="password" name = 'password' placeholder="Inserisci la tua password">
+    <input type="password" name = 'v_password' placeholder="Conferma la tua password">
+    <input type="submit" value="Registrati">
 </form>
-{%with messages = get_flashed_messages()%}
-{%if messages%}
-
-{%for item in messages%}
-{{message}}
-{%endfor%}
-
-{%endif%}
+{%with error = get_flashed_messages()%}
+    {%if error%}
+        {% for e in error%}
+            <h1 style="color: red;">{{e}}</h1>
+        {%endfor%}
+    {%endif%}
 {%endwith%}
-
-{% endblock %}
+{%endblock%}

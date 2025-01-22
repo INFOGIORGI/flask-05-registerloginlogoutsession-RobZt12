@@ -1,7 +1,5 @@
 {%extends 'base.html'%}
-
-{%block navbar%}
-<ul>
-    <li><a href="{{url_for('register')}}">Logout</a></li>
-</ul>
+{%block content%}
+<h1>Area personale</h1>
+<a href = "{{url_for('register')}}"><input type="submit" value = 'Logout'></a>
 {%endblock%}
